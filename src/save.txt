@@ -1,0 +1,19 @@
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// create application/json parser
+var jsonParser = bodyParser.json();
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+app.post('/login', urlencodedParser, function (req, res) {
+    res.send('welcome, ' + req.body.email)
+});
+
+// GET /api/users gets JSON bodies
+app.get('/api/users', (req, res) => {
+   res.json({ name: "colby"});
+});
